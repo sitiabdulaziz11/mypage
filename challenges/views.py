@@ -29,6 +29,27 @@ monthly_challenges = {
 #     """
 #     return HttpResponse("Walke for at least 20 minutes every day!")
 
+def index(request):
+    """views or function that cachs all urls.
+    """
+    list_items = ""
+    months = list(monthly_challenges.keys())
+    
+    for month in months:
+        capitalized_month = month.capitalize()  # To capitaliz the first letter.
+        month_path = reverse("month-challenge", args=[month])
+        list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
+        
+        # "<li><a href="...">January</a></li> <li><a href="...">February</a></li>..."
+    
+    # response_data = """
+    #     <ul>
+    #         <li><a href="challenges/january">January</a></li>
+    #     </ul>
+    # """
+    response_data = f"<ul>{list_items}</ul>"
+    return HttpResponse(response_data)
+
 def monthly_challenge_by_number(request, month):
     """months challenge by number.
     """
@@ -58,6 +79,8 @@ def months_challenge(request, month):
     #     return HttpResponseNotFound("This month is not supported!")
     try:
         challenge_text = monthly_challenges[month]
-        return HttpResponse(challenge_text)
+        response_data = f"<h1>{challenge_text}</h1>"
+        # return HttpResponse(challenge_text)
+        return HttpResponse(response_data)
     except:
-        return HttpResponseNotFound("This month not supported!")
+        return HttpResponseNotFound("<h1>This month not supported!</h1>")
