@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-from django.template.loader import render_to_string
+# from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -38,7 +38,7 @@ def index(request):
     
     for month in months:
         capitalized_month = month.capitalize()  # To capitaliz the first letter.
-        month_path = reverse("month-challenge", args=[month])
+        month_path = reverse("month-challenge", args=[month])  # reverse is used to generate URLs dynamically from view names instead of hardcoding URL
         list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
         
         # "<li><a href="...">January</a></li> <li><a href="...">February</a></li>..."
@@ -80,9 +80,13 @@ def months_challenge(request, month):
     #     return HttpResponseNotFound("This month is not supported!")
     try:
         challenge_text = monthly_challenges[month]
+        return render(request, "challenges/challenge.html", {
+            "text": challenge_text,
+            "month_name": month.capitalize()  # to send dynamic content to html file.
+            })  # This replace render_to_string, and render function requer request as a first argument to extract data enternally.
         # response_data = f"<h1>{challenge_text}</h1>"
-        response_data = render_to_string("challenges/challenge.html")
-        # return HttpResponse(challenge_text)
-        return HttpResponse(response_data)
+        # response_data = render_to_string("challenges/challenge.html")  # to return html file
+        # # return HttpResponse(challenge_text)
+        # return HttpResponse(response_data)
     except:
         return HttpResponseNotFound("<h1>This month not supported!</h1>")
