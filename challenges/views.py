@@ -33,13 +33,13 @@ monthly_challenges = {
 def index(request):
     """views or function that cachs all urls.
     """
-    list_items = ""
-    months = list(monthly_challenges.keys())
+    # list_items = ""
+    months = list(monthly_challenges.keys())  # list of months name.
     
-    for month in months:
-        capitalized_month = month.capitalize()  # To capitaliz the first letter.
-        month_path = reverse("month-challenge", args=[month])  # reverse is used to generate URLs dynamically from view names instead of hardcoding URL
-        list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
+    # for month in months:
+    #     capitalized_month = month.capitalize()  # To capitaliz the first letter.
+    #     month_path = reverse("month-challenge", args=[month])  # reverse is used to generate URLs dynamically from view names instead of hardcoding URL
+    #     list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
         
         # "<li><a href="...">January</a></li> <li><a href="...">February</a></li>..."
     
@@ -48,8 +48,12 @@ def index(request):
     #         <li><a href="challenges/january">January</a></li>
     #     </ul>
     # """
-    response_data = f"<ul>{list_items}</ul>"
-    return HttpResponse(response_data)
+    # response_data = f"<ul>{list_items}</ul>"
+    # return HttpResponse(response_data)
+    
+    return render(request, "challenges/index.html", {
+        "month": months
+    })
 
 def monthly_challenge_by_number(request, month):
     """months challenge by number.
@@ -82,7 +86,8 @@ def months_challenge(request, month):
         challenge_text = monthly_challenges[month]
         return render(request, "challenges/challenge.html", {
             "text": challenge_text,
-            "month_name": month.capitalize()  # to send dynamic content to html file.
+            # "month_name": month.capitalize()  # to send dynamic content to html file.
+            "month_name": month  # repleced by title in .html file.
             })  # This replace render_to_string, and render function requer request as a first argument to extract data enternally.
         # response_data = f"<h1>{challenge_text}</h1>"
         # response_data = render_to_string("challenges/challenge.html")  # to return html file
