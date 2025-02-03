@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+# import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'mypage',
     'challenges',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,8 +57,9 @@ ROOT_URLCONF = 'mypage.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
+        'DIRS': [ BASE_DIR / "mypage" / "templates"  # or add mypage to installed app
             # BASE_DIR / "challenges" / "templates"
+            
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,3 +127,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# print("BASE_DIR:", BASE_DIR)
+# print("TEMPLATES:", TEMPLATES)

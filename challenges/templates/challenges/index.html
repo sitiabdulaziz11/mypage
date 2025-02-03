@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Challenges</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% comment %} {% extends "../../../templates/base.html" this is very combersom and rather we use absoult path to django picks this path. %} {% endcomment %}
+
+  {% block page_title %}
+    All Challenges
+  {% endblock %}
+
+  {% block content %}
     <ul>
       {% for mnth in month %}
       {% comment %} <li><a href="/challenges/{{ mnth }}">{{ mnth|title }}</a></li> this is hard codded and not good to use dynamically {% endcomment %}
-      <li><a href="{% url 'month-challenge' mnth %}">{{ mnth|title }}</a></li>
+      {% comment %} <li><a href="{% url "month-challenge" month=mnth also posible instade of mnth only %}">{{ mnth|title }}</a></li> {% endcomment %}
+      <li><a href="{% url "month-challenge" mnth %}">{{ mnth|title }}</a></li>
       {% endfor %}
     </ul>
-</body>
-</html>
+  {% endblock %}
