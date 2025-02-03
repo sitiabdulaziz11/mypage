@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 
+    {% block page_title %}
+        {{ month_name|title}} Challenge
+    {% endblock  %}
 
-    <title>{{ month_name|title}} Challenge</title>
-
-
-    <!-- <h1>This Month's Challenge</h1> -->
-    <h1>{{ month_name|title }} Challenge</h1>
-    <!-- <h2>Go for a walk for at least 20 minutes every day!</h2> -->
-    {% if text is not None %}
-        <h2>{{ text }}</h2>
-    {% else %}
-        <p>There is no challenge for this month yet!</p>
-    {% endif %}
+    {% block content %}
+        <!-- <h1>This Month's Challenge</h1> -->
+        <h1>{{ month_name|title }} Challenge</h1>
+        <!-- <h2>Go for a walk for at least 20 minutes every day!</h2> -->
+        {% if text is not None %}
+            <h2>{{ text }}</h2>
+        {% else %}
+            <p>There is no challenge for this month yet!</p>
+        {% endif %}
+    {% endblock  %}
