@@ -5,6 +5,10 @@
     {% endblock  %}
 
     {% block content %}
+        {% comment %} {% include "./includes/header.html" %}this is relative path {% endcomment %}
+        {% include "challenges/includes/header.html" %}
+        {% comment %} {% include "challenges/includes/header.html" with active_page="challenge" %} we can pass speciffic value for the included template. this is done by with keyword.{% endcomment %}
+
         <!-- <h1>This Month's Challenge</h1> -->
         <h1>{{ month_name|title }} Challenge</h1>
         <!-- <h2>Go for a walk for at least 20 minutes every day!</h2> -->

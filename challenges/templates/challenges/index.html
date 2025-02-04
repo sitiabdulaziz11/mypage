@@ -7,6 +7,9 @@
   {% endblock %}
 
   {% block content %}
+  {% include "challenges/includes/header.html" %}
+  {% comment %} {% include "challenges/includes/header.html" with active_page="index" %} {% endcomment %}
+
     <ul>
       {% for mnth in month %}
       {% comment %} <li><a href="/challenges/{{ mnth }}">{{ mnth|title }}</a></li> this is hard codded and not good to use dynamically {% endcomment %}
