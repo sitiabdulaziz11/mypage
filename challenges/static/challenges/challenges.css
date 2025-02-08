@@ -1,3 +1,38 @@
 ul {
     list-style: none;
+    margin: 2rem auto; /* To center it horizontally*/
+    width: 90%;
+    max-width: 20rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); /*To give light drop shado*/
+    padding: 1rem;
+    border-radius: 12px; /* to give some rounded corners*/
+    display: flex;  /* To make display in tow direction*/
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 30rem;
+}
+
+li {
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    /* border: 1px solid #ccc;  this is for four sides*/
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+}
+
+li:last-of-type,
+li:nth-of-type(6) {
+    border-bottom: none;  /* To remove border from last element*/
+}
+
+li a {
+    text-decoration: none; /* To remove underline on anchors*/
+    /* color: #77002e; */
+    color: #383838;
+}
+
+li a:hover,
+li a:active {
+    color: #a3026e;
 }

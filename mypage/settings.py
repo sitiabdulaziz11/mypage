@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-# import os
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,7 +57,8 @@ ROOT_URLCONF = 'mypage.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / "mypage" / "templates"  # or add mypage to installed app
+        'DIRS': [ BASE_DIR / "templates"
+            #  [ BASE_DIR / "mypage" / "templates"  # or add mypage to installed app
             # BASE_DIR / "challenges" / "templates"
             
             ],
@@ -130,3 +131,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # print("BASE_DIR:", BASE_DIR)
 # print("TEMPLATES:", TEMPLATES)
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"  #  path for global static file.
+]
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
