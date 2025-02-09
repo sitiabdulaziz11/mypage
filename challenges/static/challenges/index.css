@@ -6,10 +6,11 @@ ul {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); /*To give light drop shado*/
     padding: 1rem;
     border-radius: 12px; /* to give some rounded corners*/
-    display: flex;  /* To make display in tow direction*/
+    display: flex;  /* To make display in tow columen*/
     flex-direction: column;
     flex-wrap: wrap;
     height: 30rem;
+    background-color: #eeeeee;
 }
 
 li {
